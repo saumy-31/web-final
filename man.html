@@ -1,0 +1,827 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   True Advice Counseling Center
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&amp;family=Open+Sans:ital,wght@1,300&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   /* Use system-ui font stack for universal consistent font rendering */
+   body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+   }
+   /* Animations */
+   .fade-in {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+   }
+   .fade-in.delay-1 {
+    animation-delay: 0.3s;
+   }
+   .fade-in.delay-2 {
+    animation-delay: 0.6s;
+   }
+   .fade-in.delay-3 {
+    animation-delay: 0.9s;
+   }
+   .fade-in.delay-4 {
+    animation-delay: 1.2s;
+   }
+   .fade-in.delay-5 {
+    animation-delay: 1.5s;
+   }
+   @keyframes fadeIn {
+    to {
+     opacity: 1;
+    }
+   }
+   .slide-in-left {
+    animation: slideInLeft 0.8s ease forwards;
+    opacity: 0;
+   }
+   .slide-in-left.delay-1 {
+    animation-delay: 0.3s;
+   }
+   .slide-in-left.delay-2 {
+    animation-delay: 0.6s;
+   }
+   .slide-in-left.delay-3 {
+    animation-delay: 0.9s;
+   }
+   .slide-in-left.delay-4 {
+    animation-delay: 1.2s;
+   }
+   .slide-in-left.delay-5 {
+    animation-delay: 1.5s;
+   }
+   @keyframes slideInLeft {
+    to {
+     opacity: 1;
+     transform: translateX(0);
+    }
+    from {
+     opacity: 0;
+     transform: translateX(-30px);
+    }
+   }
+   .slide-in-right {
+    animation: slideInRight 0.8s ease forwards;
+    opacity: 0;
+   }
+   @keyframes slideInRight {
+    to {
+     opacity: 1;
+     transform: translateX(0);
+    }
+    from {
+     opacity: 0;
+     transform: translateX(30px);
+    }
+   }
+   .slide-in-up {
+    animation: slideInUp 0.8s ease forwards;
+    opacity: 0;
+   }
+   .slide-in-up.delay-1 {
+    animation-delay: 0.3s;
+   }
+   .slide-in-up.delay-2 {
+    animation-delay: 0.6s;
+   }
+   .slide-in-up.delay-3 {
+    animation-delay: 0.9s;
+   }
+   @keyframes slideInUp {
+    to {
+     opacity: 1;
+     transform: translateY(0);
+    }
+    from {
+     opacity: 0;
+     transform: translateY(30px);
+    }
+   }
+   /* Button hover animation */
+   .btn-animate:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+   }
+   .btn-animate {
+    transition: all 0.3s ease;
+   }
+   /* Floating buttons */
+   .floating-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #25d366;
+    color: white;
+    border-radius: 9999px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(37, 211, 102, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 50;
+   }
+   .floating-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.75);
+   }
+   /* Pricing card hover */
+   .pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+   }
+   .pricing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.35);
+   }
+   /* Button bounce on hover */
+   .btn-bounce:hover {
+    animation: bounce 0.4s;
+    background-color: #2563eb;
+    color: white;
+   }
+   @keyframes bounce {
+    0%,
+    100% {
+     transform: translateY(0);
+    }
+    50% {
+     transform: translateY(-6px);
+    }
+   }
+   /* Mobile menu animation */
+   .menu-enter {
+    transform: translateX(100%);
+    opacity: 0;
+   }
+   .menu-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 300ms ease, opacity 300ms ease;
+   }
+   .menu-exit {
+    transform: translateX(0);
+    opacity: 1;
+   }
+   .menu-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 300ms ease, opacity 300ms ease;
+   }
+   /* Service card style */
+   .service-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgb(59 130 246 / 0.1),
+     0 4px 6px -4px rgb(59 130 246 / 0.1);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+    min-height: 280px;
+   }
+   .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(59 130 246 / 0.3),
+     0 10px 10px -5px rgb(59 130 246 / 0.2);
+    border-color: #3b82f6;
+   }
+   .service-icon {
+    background: #dbeafe;
+    color: #2563eb;
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    box-shadow: 0 4px 6px rgb(59 130 246 / 0.1);
+    flex-shrink: 0;
+    transition: color 0.3s ease, background-color 0.3s ease;
+   }
+   .service-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2563eb;
+    margin-bottom: 0;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+   }
+   .service-card:hover .service-title {
+    color: #1e40af;
+   }
+   .service-desc {
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    flex-grow: 1;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+   }
+   /* Remove underline accent below title */
+   .service-title::after {
+    content: none;
+   }
+   /* Our Approach Section padding adjustment */
+   @media (min-width: 768px) {
+    #about > div.md\:w-1\/2:first-child {
+     padding-left: 1.5rem; /* default px-6 is 1.5rem */
+     padding-right: 0;
+    }
+    #about > div.md\:w-1\/2:last-child {
+     padding-right: 1.5rem; /* default px-6 is 1.5rem */
+     padding-left: 0;
+    }
+    /* To align left content's left padding equal to right content's right padding */
+    #about {
+     padding-left: 1.5rem;
+     padding-right: 1.5rem;
+    }
+   }
+   /* Fix extra space below services on mobile */
+   @media (max-width: 639px) {
+    #services {
+     padding-bottom: 1rem !important;
+     margin-bottom: 0 !important;
+    }
+    /* Remove bottom margin from last row grid gap */
+    #services > div.max-w-7xl > div.grid {
+     margin-bottom: 0 !important;
+    }
+    /* Remove invisible service-card to avoid extra space */
+    #services > div.max-w-7xl > div.grid > .service-card.invisible {
+     display: none !important;
+    }
+   }
+  </style>
+ </head>
+ <body class="bg-white text-slate-800">
+  <!-- Navigation Bar -->
+  <nav class="w-full border-b border-slate-300 bg-white sticky top-0 z-50 shadow-sm">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex flex-col items-start">
+     <h1 class="text-4xl font-extrabold font-montserrat text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-600 to-indigo-800 tracking-wide uppercase drop-shadow-lg select-none">
+      TRUE ADVICE
+     </h1>
+     <span class="text-base font-light font-open-sans text-gray-700 tracking-tight select-none">
+      Counseling Center
+     </span>
+    </div>
+    <div class="hidden sm:flex items-center space-x-8">
+     <ul class="flex space-x-6 text-slate-700 font-semibold text-sm">
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="#home">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="#services">
+        Services
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="#about">
+        About
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="#pricing">
+        Pricing
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="#contact">
+        Contact
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-800 transition-colors duration-300" href="https://lifecoachgaurav.super.site/" rel="noopener" target="_blank">
+        Posts
+       </a>
+      </li>
+     </ul>
+     <a aria-label="Book Your Session" class="btn-animate bg-indigo-800 text-white px-5 py-2 rounded-md font-semibold shadow-md hover:bg-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform duration-300 whitespace-nowrap" href="#pricing">
+      Book Session
+     </a>
+    </div>
+    <button aria-label="Open menu" class="sm:hidden text-indigo-800 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-300" id="mobile-menu-button">
+     <i class="fas fa-bars text-2xl">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile Menu -->
+   <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50" id="mobile-menu">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-300">
+     <div>
+      <h1 class="text-4xl font-extrabold font-montserrat text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-600 to-indigo-800 tracking-wide uppercase drop-shadow-lg select-none">
+       TRUE ADVICE
+      </h1>
+      <span class="text-base font-light font-open-sans text-gray-700 tracking-tight select-none">
+       Counseling Center
+      </span>
+     </div>
+     <button aria-label="Close menu" class="text-indigo-800 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-300" id="mobile-menu-close">
+      <i class="fas fa-times text-2xl">
+      </i>
+     </button>
+    </div>
+    <nav class="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold text-slate-700">
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="#home" onclick="closeMobileMenu()">
+      Home
+     </a>
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="#services" onclick="closeMobileMenu()">
+      Services
+     </a>
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="#about" onclick="closeMobileMenu()">
+      About
+     </a>
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="#pricing" onclick="closeMobileMenu()">
+      Pricing
+     </a>
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="#contact" onclick="closeMobileMenu()">
+      Contact
+     </a>
+     <a class="hover:text-indigo-800 transition-colors duration-300" href="https://lifecoachgaurav.super.site/" onclick="closeMobileMenu()" rel="noopener" target="_blank">
+      Posts
+     </a>
+     <a aria-label="Book Your Session" class="btn-animate bg-indigo-800 text-white px-6 py-3 rounded-md font-semibold shadow-md hover:bg-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform duration-300 text-center" href="#pricing" onclick="closeMobileMenu()">
+      Book Session
+     </a>
+    </nav>
+   </div>
+   <div class="fixed inset-0 bg-black bg-opacity-30 opacity-0 pointer-events-none transition-opacity duration-300 z-40" id="mobile-menu-backdrop">
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16 sm:py-24 flex flex-col-reverse md:flex-row items-center gap-12" id="home">
+   <div class="md:w-1/2 fade-in slide-in-left" style="animation-delay: 0.3s;">
+    <h2 class="text-4xl sm:text-5xl font-extrabold text-indigo-800 leading-tight mb-6 font-montserrat">
+     Hi, Welcome to
+     <br/>
+     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-600 to-indigo-800">
+      TRUE ADVICE COUNSELING CENTER
+     </span>
+    </h2>
+    <p class="text-slate-700 text-lg mb-8 leading-relaxed font-open-sans">
+     "We believe everyone deserves a safe space to explore their thoughts,
+     emotions, relationships, and life challenges. Find clarity, heal
+     relationships, and achieve holistic well-being with our experienced
+     guidance."
+    </p>
+    <a href="#pricing">
+     <button aria-label="Schedule Consultation" class="btn-animate bg-indigo-800 text-white px-8 py-3 rounded-md font-semibold shadow-md hover:bg-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform duration-300">
+      Schedule Consultation
+     </button>
+    </a>
+   </div>
+   <div class="md:w-1/2 fade-in slide-in-right" style="animation-delay: 0.6s;">
+    <img alt="A professional male counselor attentively advising a patient in a cozy counseling room with warm lighting and calm atmosphere" class="rounded-lg shadow-lg w-full max-w-md mx-auto" height="400" loading="lazy" src="gaurav.thrp.jpg" width="600"/>
+   </div>
+  </section>
+  <!-- Our Services Section -->
+  <section class="bg-slate-50 py-16 px-6 mb-6" id="services">
+   <div class="max-w-7xl mx-auto text-center mb-12">
+    <h3 class="text-3xl font-extrabold text-indigo-800 mb-4 fade-in flex justify-center items-center gap-2">
+     <span class="text-indigo-800 select-none">
+     </span>
+     Our Services
+    </h3>
+    <p class="text-slate-600 max-w-2xl mx-auto fade-in delay-1">
+     We offer a variety of counseling services tailored to your needs.
+    </p>
+   </div>
+   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-8">
+    <div class="service-card slide-in-left delay-1">
+     <div class="service-icon text-indigo-800 bg-indigo-100">
+      <i class="fas fa-user">
+      </i>
+     </div>
+     <h4 class="service-title text-indigo-800">
+      Personal Counseling
+     </h4>
+     <p class="service-desc">
+      We offer one-on-one personal counseling sessions designed to help
+      individuals overcome stress, anxiety, self-doubt, and emotional
+      challenges. Our approach focuses on fostering emotional well-being,
+      encouraging self-growth, and building a stronger, more confident inner
+      self.
+     </p>
+    </div>
+    <div class="service-card slide-in-left delay-2">
+     <div class="service-icon text-indigo-800 bg-indigo-100">
+      <i class="fas fa-users">
+      </i>
+     </div>
+     <h4 class="service-title text-indigo-800">
+      Group &amp; Family Counseling
+     </h4>
+     <p class="service-desc">
+      Our group and family counseling sessions promote healthier relationships
+      through open communication and mutual understanding. We assist families
+      in navigating conflicts, improving bonds, and resolving long-standing
+      emotional issues with empathy and tailored strategies.
+     </p>
+    </div>
+    <div class="service-card slide-in-left delay-3">
+     <div class="service-icon text-indigo-800 bg-indigo-100">
+      <i class="fas fa-heart">
+      </i>
+     </div>
+     <h4 class="service-title text-indigo-800">
+      Relationship &amp; Couple Counseling
+     </h4>
+     <p class="service-desc">
+      Whether dating, married, or facing challenges, our couple counseling
+      supports stronger communication, emotional intimacy, and mutual respect.
+      We aim to rebuild trust and strengthen your relationship using proven
+      therapeutic approaches.
+     </p>
+    </div>
+   </div>
+   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mt-8">
+    <div class="service-card slide-in-left delay-4">
+     <div class="service-icon text-indigo-800 bg-indigo-100">
+      <i class="fas fa-school">
+      </i>
+     </div>
+     <h4 class="service-title text-indigo-800">
+      School &amp; College Mentorship
+     </h4>
+     <p class="service-desc">
+      We guide students through academic stress, career uncertainty, emotional
+      challenges, and peer pressure. Our mentorship enhances clarity,
+      motivation, and mental resilience to help young minds thrive academically
+      and personally.
+     </p>
+    </div>
+    <div class="service-card slide-in-left delay-5">
+     <div class="service-icon text-indigo-800 bg-indigo-100">
+      <i class="fas fa-briefcase">
+      </i>
+     </div>
+     <h4 class="service-title text-indigo-800">
+      Corporate Wellness Programs
+     </h4>
+     <p class="service-desc">
+      We provide Employee Assistance Programs (EAP), stress management, and
+      mental health workshops. Our corporate wellness solutions aim to enhance
+      productivity, reduce burnout, and foster a healthier, more balanced
+      workplace environment.
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Our Approach Section -->
+  <section class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-0" id="about">
+   <div class="md:w-1/2 fade-in slide-in-left" style="animation-delay: 0.3s;">
+    <h3 class="text-3xl font-extrabold text-indigo-800 mb-6 font-montserrat">
+     🌿 Our Approach
+    </h3>
+    <p class="text-slate-700 text-lg leading-relaxed mb-6 font-open-sans">
+     At True Advice Counseling Center, we believe healing begins with empathy,
+     understanding, and a deep emotional connection. Our approach blends modern
+     counseling techniques with the timeless wisdom of mindfulness and spiritual
+     awakening. We guide each individual with compassion, respecting their unique
+     journey while gently helping them reconnect with their inner peace. Through
+     active listening, emotional awareness, and soul-centered guidance, we create
+     a safe space for growth and transformation. Our sessions are rooted in
+     authenticity, where every client is heard, valued, and spiritually nurtured.
+     Whether you're facing anxiety, relationship conflicts, or inner confusion—we
+     walk with you, not just as professionals, but as fellow human beings devoted
+     to your holistic healing.
+    </p>
+   </div>
+   <div class="md:w-1/2 fade-in slide-in-right" style="animation-delay: 0.6s;">
+    <img alt="Professional portrait of Dr. Rajesh Kumar, a middle-aged male counselor wearing a suit, smiling warmly in a well-lit office environment" class="rounded-lg shadow-lg w-full max-w-sm mx-auto" height="500" loading="lazy" src="photoofgaurav.jpg" width="400"/>
+   </div>
+  </section>
+  <!-- About Gaurav Maurya Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16 bg-white border-t border-b border-slate-200">
+   <div class="max-w-5xl mx-auto fade-in slide-in-up" style="animation-delay: 0.3s;">
+    <h3 class="text-3xl font-extrabold text-indigo-800 mb-8 text-center font-montserrat">
+     About Gaurav Maurya
+    </h3>
+    <p class="text-slate-800 text-lg leading-relaxed mb-6 font-semibold text-center font-open-sans">
+     Empowering lives through mindful support and compassionate guidance
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     With over 5 years of deep-rooted experience in counseling, life coaching,
+     and holistic wellness, I, Gaurav Maurya, have dedicated my career to
+     helping individuals and communities unlock their fullest potential. As
+     the founder of True Advice Counseling Center, I have successfully
+     conducted more than 3000+ counseling sessions, transforming lives across
+     emotional, personal, relationship, educational, and workplace dimensions.
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     My work spans across:
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-semibold font-open-sans">
+     Life Coaching and Personal Counseling
+     <br/>
+     Relationship &amp; Couple Therapy
+     <br/>
+     Mindfulness &amp; Meditation Coaching
+     <br/>
+     Parenting Support &amp; Anger Management
+     <br/>
+     Depression, Anxiety &amp; Emotional Wellness
+     <br/>
+     EAP Counseling &amp; POSH Training for Corporates
+     <br/>
+     Student Career Counseling in Schools and Colleges
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     A certified Yoga and Meditation Trainer, I skillfully combine spiritual
+     wisdom with modern psychological approaches to provide healing
+     experiences that are practical, grounded, and transformational. I
+     collaborate with NGOs, schools, corporates, and government bodies on
+     mental health, youth development, women's empowerment, and emotional
+     well-being.
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     I am also an experienced POSH Consultant, conducting workshops to build
+     safer workplaces, and a committed facilitator of emotional well-being
+     programs in educational institutions.
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     I believe that true wellness lies in balance—between mind, body,
+     relationships, and purpose. Let's work together to nurture your personal
+     clarity, emotional strength, and inner peace.
+    </p>
+    <p class="text-slate-800 text-lg leading-relaxed mt-6 font-semibold font-open-sans">
+     Gaurav Maurya
+    </p>
+    <p class="text-slate-800 text-lg leading-relaxed font-semibold font-open-sans">
+     Counselor | Life Coach | Mentor | Yoga &amp; Meditation Expert
+    </p>
+    <p class="text-slate-700 text-base leading-relaxed mb-6 font-open-sans">
+     Founder – True Advice Counseling Center
+    </p>
+   </div>
+  </section>
+  <!-- Pricing Section -->
+  <section class="py-16 px-6 bg-slate-50" id="pricing">
+   <div class="max-w-7xl mx-auto text-center mb-12">
+    <h3 class="text-3xl font-extrabold text-indigo-800 mb-4 fade-in font-montserrat">
+     Our Pricing
+    </h3>
+    <p class="text-slate-600 max-w-2xl mx-auto fade-in delay-1 font-open-sans">
+     Choose a counseling plan that fits your needs and budget.
+    </p>
+   </div>
+   <div class="max-w-md mx-auto">
+    <div class="pricing-card p-10 text-center shadow-lg rounded-xl">
+     <h4 class="text-2xl font-extrabold text-indigo-700 mb-6 font-montserrat">
+      Personal Counseling Sessions
+     </h4>
+     <p class="text-5xl font-extrabold text-indigo-800 mb-8 tracking-tight font-montserrat">
+      ₹599
+      <span class="text-lg font-semibold align-top">
+       / session
+      </span>
+     </p>
+     <ul class="text-slate-700 mb-10 space-y-4 text-left max-w-xs mx-auto font-open-sans">
+      <li class="flex items-center gap-3">
+       <i class="fas fa-check-circle text-green-500 text-xl flex-shrink-0">
+       </i>
+       <span>
+        One-on-one personalized counseling
+       </span>
+      </li>
+      <li class="flex items-center gap-3">
+       <i class="fas fa-check-circle text-green-500 text-xl flex-shrink-0">
+       </i>
+       <span>
+        Confidential and safe environment
+       </span>
+      </li>
+      <li class="flex items-center gap-3">
+       <i class="fas fa-check-circle text-green-500 text-xl flex-shrink-0">
+       </i>
+       <span>
+        Professional guidance and support
+       </span>
+      </li>
+      <li class="flex items-center gap-3">
+       <i class="fas fa-check-circle text-green-500 text-xl flex-shrink-0">
+       </i>
+       <span>
+        Flexible scheduling options
+       </span>
+      </li>
+      <li class="flex items-center gap-3">
+       <i class="fas fa-check-circle text-green-500 text-xl flex-shrink-0">
+       </i>
+       <span>
+        Online and offline sessions available
+       </span>
+      </li>
+     </ul>
+     <a aria-label="Book Your Session on WhatsApp" class="btn-bounce inline-block bg-indigo-800 text-white px-10 py-3 rounded-full font-semibold shadow-md hover:bg-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition duration-300 mx-auto" href="https://wa.me/918317036927" rel="noopener" target="_blank">
+      Book Your Session
+     </a>
+    </div>
+   </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16" id="contact">
+   <div class="text-center mb-12 fade-in">
+    <h3 class="text-3xl font-extrabold text-indigo-800 mb-4 font-montserrat">
+     Take the First Step Today
+    </h3>
+    <p class="text-slate-700 max-w-2xl mx-auto leading-relaxed font-open-sans">
+     Whether you’re seeking guidance, healing, or growth, True Advice Counseling
+     Center is here for you.
+    </p>
+   </div>
+   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
+    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center transform transition duration-500 hover:scale-105 hover:shadow-xl slide-in-up delay-1">
+     <div class="text-indigo-800 text-4xl mb-3">
+      <i class="fas fa-phone-alt">
+      </i>
+     </div>
+     <h4 class="font-semibold text-lg mb-1 font-open-sans">
+      Phone
+     </h4>
+     <a class="text-slate-700 font-mono select-text hover:text-indigo-800 transition-colors duration-300" href="tel:8317036927">
+      8317036927
+     </a>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center transform transition duration-500 hover:scale-105 hover:shadow-xl slide-in-up delay-2">
+     <div class="text-indigo-800 text-4xl mb-3">
+      <i class="fas fa-envelope">
+      </i>
+     </div>
+     <h4 class="font-semibold text-lg mb-1 font-open-sans">
+      Email
+     </h4>
+     <a class="text-slate-700 font-mono select-text hover:text-indigo-800 transition-colors duration-300" href="mailto:golujaunpur6@gmail.com">
+      golujaunpur6@gmail.com
+     </a>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center transform transition duration-500 hover:scale-105 hover:shadow-xl slide-in-up delay-3">
+     <div class="text-indigo-800 text-4xl mb-3">
+      <i class="fas fa-map-marker-alt">
+      </i>
+     </div>
+     <h4 class="font-semibold text-lg mb-1 font-open-sans">
+      Location
+     </h4>
+     <p class="text-slate-700 select-text font-open-sans">
+      Jaunpur, Uttar Pradesh
+     </p>
+    </div>
+   </div>
+   <div class="max-w-7xl mx-auto text-center mb-6">
+    <h4 class="text-xl font-semibold text-indigo-800 mb-4 font-montserrat">
+     Consultation Modes
+    </h4>
+    <div class="flex justify-center gap-6 flex-wrap mb-8">
+     <button class="px-6 py-2 rounded-full border border-indigo-800 text-indigo-800 font-semibold hover:bg-indigo-800 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 font-open-sans">
+      Offline
+     </button>
+     <button class="px-6 py-2 rounded-full border border-indigo-800 text-indigo-800 font-semibold hover:bg-indigo-800 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 font-open-sans">
+      Online
+     </button>
+     <button class="px-6 py-2 rounded-full border border-indigo-800 text-indigo-800 font-semibold hover:bg-indigo-800 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300 font-open-sans">
+      Onsite
+     </button>
+    </div>
+    <div class="flex justify-center gap-6 flex-wrap">
+     <a aria-label="Call Now" class="px-6 py-2 rounded-full bg-indigo-800 text-white font-semibold shadow-md hover:bg-indigo-900 transition-colors duration-300 flex items-center gap-2 font-open-sans" href="tel:8317036927" title="Call Now">
+      <i class="fas fa-phone-alt">
+      </i>
+      Call Now
+     </a>
+     <a aria-label="WhatsApp" class="px-6 py-2 rounded-full bg-green-500 text-white font-semibold shadow-md hover:bg-green-600 transition-colors duration-300 flex items-center gap-2 font-open-sans" href="https://wa.me/918317036927" rel="noopener" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp">
+      </i>
+      WhatsApp
+     </a>
+     <a aria-label="LinkedIn" class="px-6 py-2 rounded-full bg-slate-700 text-white font-semibold shadow-md hover:bg-slate-900 transition-colors duration-300 flex items-center gap-2 font-open-sans" href="https://www.linkedin.com/in/gkjaunpur?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app" rel="noopener" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin-in">
+      </i>
+      LinkedIn
+     </a>
+    </div>
+   </div>
+  </section>
+  <!-- Floating WhatsApp Button -->
+  <a aria-label="WhatsApp" class="floating-btn" href="https://wa.me/918317036927" rel="noopener" target="_blank" title="WhatsApp">
+   <i class="fab fa-whatsapp text-3xl">
+   </i>
+  </a>
+  <!-- Footer -->
+  <footer class="bg-blue-50 border-t border-slate-300 mt-16">
+   <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12 text-slate-700">
+    <div>
+     <h4 class="text-xl font-extrabold text-indigo-800 mb-3 font-montserrat">
+      True Advice Counseling Center
+     </h4>
+     <p class="font-light font-open-sans">
+      True advice for a Balanced &amp; Positive Life
+     </p>
+    </div>
+    <div>
+     <h4 class="text-xl font-extrabold text-indigo-800 mb-3 font-montserrat">
+      Our Services
+     </h4>
+     <ul class="space-y-1 font-semibold font-open-sans">
+      <li>
+       ✓ Personal Counseling
+      </li>
+      <li>
+       ✓ Group &amp; Family Counseling
+      </li>
+      <li>
+       ✓ Relationship &amp; Couple Counseling
+      </li>
+      <li>
+       ✓ School &amp; College Mentorship
+      </li>
+      <li>
+       ✓ Corporate Wellness Programs
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="text-xl font-extrabold text-indigo-800 mb-3 font-montserrat">
+      Contact
+     </h4>
+     <p class="flex items-center gap-2 font-mono mb-2">
+      <i class="fas fa-phone-alt text-indigo-800">
+      </i>
+      <a class="hover:text-indigo-900 transition-colors duration-300" href="tel:8317036927">
+       8317036927
+      </a>
+     </p>
+     <p class="flex items-center gap-2 font-mono mb-2">
+      <i class="fas fa-envelope text-indigo-800">
+      </i>
+      <a class="hover:text-indigo-900 transition-colors duration-300" href="mailto:golujaunpur6@gmail.com">
+       golujaunpur6@gmail.com
+      </a>
+     </p>
+     <p class="flex items-center gap-2 font-mono">
+      <i class="fas fa-map-marker-alt text-indigo-800">
+      </i>
+      Jaunpur, Uttar Pradesh
+     </p>
+    </div>
+   </div>
+   <div class="border-t border-slate-300 text-center py-4 text-slate-600 text-sm select-none font-open-sans">
+    © 2025 True Advice Counseling Center. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   const mobileMenuButton = document.getElementById("mobile-menu-button");
+   const mobileMenu = document.getElementById("mobile-menu");
+   const mobileMenuClose = document.getElementById("mobile-menu-close");
+   const mobileMenuBackdrop = document.getElementById("mobile-menu-backdrop");
+
+   function openMobileMenu() {
+    mobileMenu.classList.remove("translate-x-full");
+    mobileMenu.classList.add("translate-x-0");
+    mobileMenuBackdrop.classList.remove("opacity-0", "pointer-events-none");
+    mobileMenuBackdrop.classList.add("opacity-100", "pointer-events-auto");
+    document.body.style.overflow = "hidden";
+   }
+
+   function closeMobileMenu() {
+    mobileMenu.classList.remove("translate-x-0");
+    mobileMenu.classList.add("translate-x-full");
+    mobileMenuBackdrop.classList.remove("opacity-100", "pointer-events-auto");
+    mobileMenuBackdrop.classList.add("opacity-0", "pointer-events-none");
+    document.body.style.overflow = "";
+   }
+
+   mobileMenuButton.addEventListener("click", openMobileMenu);
+   mobileMenuClose.addEventListener("click", closeMobileMenu);
+   mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
+
+   // Close menu on link click
+   function closeMobileMenuOnLinkClick() {
+    closeMobileMenu();
+   }
+  </script>
+ </body>
+</html>
